@@ -13,11 +13,13 @@ import com.yusubov.composebook.core.knobs.Knob
 class BooleanKnob(
     label: String,
     initialValue: Boolean = false,
-    description: String = "",
+    description: String? = null,
 ) : Knob<Boolean>(label, initialValue, description) {
-
     @Composable
-    override fun Content(value: Boolean, onValueChange: (Boolean) -> Unit) {
+    override fun Content(
+        value: Boolean,
+        onValueChange: (Boolean) -> Unit,
+    ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -31,3 +33,5 @@ class BooleanKnob(
         }
     }
 }
+
+

@@ -1,8 +1,30 @@
 [versions]
-kotlin = "2.1.20"
-compose-multiplatform = "1.7.3"
+foundation = "1.10.3"
+kotlin = "2.3.20"
+compose-multiplatform = "1.10.3"
+agp = "8.13.2"
+android-minSdk = "24"
+android-compileSdk = "36"
+activity-compose = "1.13.0"
+material3 = "1.9.0"
+materialIconsExtended = "1.7.3"
+runtime = "1.10.3"
+ui = "1.10.3"
+uiTooling = "1.10.6"
+
+[libraries]
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
+foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "foundation" }
+material-icons-extended = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
+material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }
+runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "runtime" }
+ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "ui" }
+ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
+ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiTooling" }
 
 [plugins]
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }

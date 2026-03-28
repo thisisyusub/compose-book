@@ -8,17 +8,13 @@ import androidx.compose.runtime.setValue
 abstract class Knob<T>(
     val label: String,
     val initialValue: T,
-    val description: String = "",
+    val description: String? = null,
 ) {
     var value: T by mutableStateOf(initialValue)
         internal set
 
     fun update(newValue: T) {
         value = newValue
-    }
-
-    fun reset() {
-        value = initialValue
     }
 
     @Composable
