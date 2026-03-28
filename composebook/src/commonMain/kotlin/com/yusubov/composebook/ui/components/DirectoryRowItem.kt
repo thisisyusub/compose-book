@@ -1,4 +1,4 @@
-package com.yusubov.composebook.ui
+package com.yusubov.composebook.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

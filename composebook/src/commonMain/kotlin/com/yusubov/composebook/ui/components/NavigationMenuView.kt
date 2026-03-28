@@ -1,4 +1,4 @@
-package com.yusubov.composebook.ui
+package com.yusubov.composebook.ui.components
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn

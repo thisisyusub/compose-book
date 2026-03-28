@@ -1,10 +1,7 @@
 package com.yusubov.composebook.sample
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.yusubov.composebook.ComposeBook
 import com.yusubov.composebook.dsl.composeBookConfig
 
@@ -14,8 +11,18 @@ fun ComposeBookDemo() {
         composeBookConfig {
             directory("Foundation") {
                 directory("Colors") {
-                    directory("Primary") {}
-                    directory("Secondary") {}
+                    directory("Primary") {
+                        useCase("Standard") {
+                            val knob = knob.string("test")
+                            Text(knob)
+                        }
+                    }
+                    directory("Secondary") {
+                        useCase("Standard 2") {
+                            val knob = knob.string("test 2")
+                            Text(knob)
+                        }
+                    }
                     directory("Tertiary") {}
                     directory("Error") {}
                     directory("Neutral") {}

@@ -23,6 +23,9 @@ import androidx.compose.ui.Modifier
 import com.yusubov.composebook.core.knobs.KnobScope
 import com.yusubov.composebook.core.navigation.NavigationState
 import com.yusubov.composebook.ui.components.HalfExpandableBottomSheet
+import com.yusubov.composebook.ui.components.KnobListView
+import com.yusubov.composebook.ui.components.NavigationMenuView
+import com.yusubov.composebook.ui.components.UseCaseView
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,13 +45,13 @@ internal fun MobileShellView(
 
     if (showKnobBottomSheet) {
         HalfExpandableBottomSheet(onDismiss = { showKnobBottomSheet = false }) {
-            Text("Knobs will be here...")
+           KnobListView(knobScope)
         }
     }
 
     if (showAddOnsBottomSheet) {
         HalfExpandableBottomSheet(onDismiss = { showAddOnsBottomSheet = false }) {
-            Text("AddOns will be here...")
+            // TODO: add-ons will be here
         }
     }
 
@@ -56,7 +59,10 @@ internal fun MobileShellView(
         Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background),
     ) {
         Surface(modifier = Modifier.weight(1f)) {
-            Text("Preview will be here...")
+            UseCaseView(
+                knobScope = knobScope,
+                navigationState =  navigationState,
+            )
         }
 
         NavigationBar {
