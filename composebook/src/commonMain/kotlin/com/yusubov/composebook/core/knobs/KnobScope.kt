@@ -45,8 +45,4 @@ class KnobScope {
         val registered = knobs[knob.label] as? Knob<T>
         return registered?.value ?: knob.initialValue
     }
-
-    fun clear() {
-        knobs.clear()
-    }
 }
