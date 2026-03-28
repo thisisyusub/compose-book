@@ -1,6 +1,12 @@
 package com.yusubov.composebook.dsl
 
 import androidx.compose.runtime.Composable
+import com.yusubov.composebook.core.addons.Addon
+import com.yusubov.composebook.core.addons.defaults.DeviceViewport
+import com.yusubov.composebook.core.addons.defaults.TextScaleAddon
+import com.yusubov.composebook.core.addons.defaults.ThemeAddon
+import com.yusubov.composebook.core.addons.defaults.ThemeOption
+import com.yusubov.composebook.core.addons.defaults.ViewportAddon
 import com.yusubov.composebook.core.models.Directory
 import com.yusubov.composebook.core.models.UseCase
 import com.yusubov.composebook.core.models.UseCaseScope
@@ -11,14 +17,19 @@ fun composeBookConfig(block: ComposeBookConfigBuilder.() -> Unit): ComposeBookCo
 
 @ComposeBookDsl
 class ComposeBookConfigBuilder {
-    var title: String = "ComposeBook"
     private val directories = mutableListOf<Directory>()
+    private val addonsList = mutableListOf<Addon>()
 
     fun directory(name: String, block: DirectoryBuilder.() -> Unit) {
         directories.add(DirectoryBuilder(name).apply(block).build())
     }
 
-    internal fun build() = ComposeBookConfig(title, directories)
+    fun addons(block: AddonsBuilder.() -> Unit) {
+        addonsList.addAll(AddonsBuilder().apply(block).build())
+    }
+
+
+    internal fun build() = ComposeBookConfig(directories, addonsList)
 }
 
 @ComposeBookDsl
@@ -35,4 +46,24 @@ class DirectoryBuilder(private val name: String) {
     }
 
     internal fun build() = Directory(name, useCases, subdirectories)
+}
+
+@ComposeBookDsl
+class AddonsBuilder {
+    private val addons = mutableListOf<Addon>()
+
+    fun <T> themeAddon(
+        themes: List<ThemeOption<T>>,
+        builder: @Composable (data: T, content: @Composable () -> Unit) -> Unit,
+    ) { addons.add(ThemeAddon(themes, builder)) }
+
+    fun textScaleAddon(initialScale: Float = 1f) {
+        addons.add(TextScaleAddon(initialScale))
+    }
+
+    fun viewportAddon(viewports: List<DeviceViewport> = DeviceViewport.defaults) {
+        addons.add(ViewportAddon(viewports))
+    }
+
+    internal fun build(): List<Addon> = addons.toList()
 }

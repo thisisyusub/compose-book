@@ -9,6 +9,7 @@ import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.yusubov.composebook.core.addons.Addon
 import com.yusubov.composebook.core.knobs.KnobScope
 import com.yusubov.composebook.core.navigation.NavigationState
 import com.yusubov.composebook.ui.components.ConfigPanel
@@ -19,6 +20,7 @@ import com.yusubov.composebook.ui.components.UseCaseView
 internal fun DesktopShellView(
     knobScope: KnobScope,
     navigationState: NavigationState,
+    addonList: List<Addon>,
 ) {
     Row(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         // Left: Navigation
@@ -33,12 +35,13 @@ internal fun DesktopShellView(
             modifier = Modifier.weight(1f),
             knobScope = knobScope,
             navigationState = navigationState,
+            addonList = addonList,
         )
         VerticalDivider()
 
-        // Right: Knobs + Add-ons
         ConfigPanel(
             knobScope = knobScope,
+            addonList = addonList,
             modifier = Modifier.width(300.dp),
         )
     }

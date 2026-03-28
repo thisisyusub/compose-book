@@ -30,11 +30,13 @@ fun ComposeBook(
             DesktopShellView(
                 knobScope = knobScope,
                 navigationState = navState,
+                addonList = config.addonList,
             )
         } else {
             MobileShellView(
                 knobScope = knobScope,
                 navigationState = navState,
+                addonList = config.addonList,
             )
         }
     }

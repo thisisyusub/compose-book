@@ -20,8 +20,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.yusubov.composebook.core.addons.Addon
 import com.yusubov.composebook.core.knobs.KnobScope
 import com.yusubov.composebook.core.navigation.NavigationState
+import com.yusubov.composebook.ui.components.AddonListView
 import com.yusubov.composebook.ui.components.HalfExpandableBottomSheet
 import com.yusubov.composebook.ui.components.KnobListView
 import com.yusubov.composebook.ui.components.NavigationMenuView
@@ -32,6 +34,7 @@ import com.yusubov.composebook.ui.components.UseCaseView
 internal fun MobileShellView(
     knobScope: KnobScope,
     navigationState: NavigationState,
+    addonList: List<Addon>,
 ) {
     var showMenuBottomSheet by remember { mutableStateOf(false) }
     var showKnobBottomSheet by remember { mutableStateOf(false) }
@@ -45,13 +48,13 @@ internal fun MobileShellView(
 
     if (showKnobBottomSheet) {
         HalfExpandableBottomSheet(onDismiss = { showKnobBottomSheet = false }) {
-           KnobListView(knobScope)
+            KnobListView(knobScope)
         }
     }
 
     if (showAddOnsBottomSheet) {
         HalfExpandableBottomSheet(onDismiss = { showAddOnsBottomSheet = false }) {
-            // TODO: add-ons will be here
+            AddonListView(addonList = addonList)
         }
     }
 
@@ -61,7 +64,8 @@ internal fun MobileShellView(
         Surface(modifier = Modifier.weight(1f)) {
             UseCaseView(
                 knobScope = knobScope,
-                navigationState =  navigationState,
+                navigationState = navigationState,
+                addonList = addonList,
             )
         }
 

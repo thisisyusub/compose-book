@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PrimaryTabRow
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,11 +15,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import com.yusubov.composebook.core.addons.Addon
 import com.yusubov.composebook.core.knobs.KnobScope
 
 @Composable
 internal fun ConfigPanel(
     knobScope: KnobScope,
+    addonList: List<Addon>,
     modifier: Modifier = Modifier,
 ) {
     var selectedTab by remember { mutableStateOf(0) }
@@ -54,7 +55,7 @@ internal fun ConfigPanel(
         HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f))
         when (selectedTab) {
             0 -> KnobListView(knobScope)
-            1 -> Surface { }
+            1 -> AddonListView(addonList = addonList)
         }
     }
 }
