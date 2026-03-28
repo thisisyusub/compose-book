@@ -1,0 +1,13 @@
+build
+local.properties
+
+.kotlin
+.idea
+.gradle
+
+.DS_Store
+
+gradlew
+gradlew.bat
+
+kotlin-js-store
