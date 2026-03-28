@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="composebook-wasm-js-0.1.0">
+    <output-path>$PROJECT_DIR$/composebook/build/libs</output-path>
+    <root id="archive" name="composebook-wasm-js-0.1.0.jar">
+      <element id="module-output" name="ComposeBook.composebook.wasmJsMain" />
+    </root>
+  </artifact>
+</component>

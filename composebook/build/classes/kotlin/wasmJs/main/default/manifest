@@ -1,0 +1,11 @@
+abi_version=1.201.0
+builtins_platform=WASM
+compiler_version=2.1.20
+depends=org.jetbrains.compose.material3\:material3 org.jetbrains.compose.material\:material-ripple org.jetbrains.compose.foundation\:foundation org.jetbrains.compose.animation\:animation org.jetbrains.compose.material\:material-icons-extended org.jetbrains.compose.material\:material-icons-core org.jetbrains.compose.foundation\:foundation-layout org.jetbrains.compose.ui\:ui org.jetbrains.kotlinx\:kotlinx-browser org.jetbrains.compose.animation\:animation-core org.jetbrains.kotlinx\:kotlinx-coroutines-core org.jetbrains.kotlinx\:atomicfu org.jetbrains.compose.runtime\:runtime-saveable kotlin org.jetbrains.compose.runtime\:runtime org.jetbrains.compose.ui\:ui-text org.jetbrains.compose.ui\:ui-graphics org.jetbrains.compose.ui\:ui-unit org.jetbrains.skiko\:skiko org.jetbrains.compose.ui\:ui-geometry org.jetbrains.compose.ui\:ui-util
+ir_signature_versions=1,2
+jsOutputName=ComposeBook-composebook-wasm-js
+metadata_version=1.4.1
+serializedIrFileFingerprints=3i6ibep7mrsy8.3965slia88g21 jpcwb0w0897i.3crysn65yiupc 29nuq0feewxoy.14mcn452stkoe 2q9uvw7mty0a4.m4wekwxswyby w9akvcdstzz8.rghh9u8uqnvs 2fu2wwyz95vwy.1glvzsv3izhu4 13pwm8wofdmun.1dhvy1636ri67 2lbql3jz48oa0.388qonxe3sba1 15erg1y7mqn8a.2cdbtx7plgg42 2nqowor5r4w3b.3r8odacaaa1dy 1q7zy46k63wns.14ecpy6ewhkm5 19s9925qbyhlc.1ebtnalw3lzjz xtnblcpdrssi.gvk1cojhq1zw nxttqa6dxkzj.2fzvnrk2x2vv7 1xcjpintk5h0z.33cgnptcfe00k syf7i0c2enr6.3jh9n6dm612dx xn5k9ywflus9.1sxqueqkdy1tu 2zocx94nec51s.30vw1288l2z9f 3esn0mz8debb4.2qcwnnt8xqjjn 3beggvxhp6uza.308ssj25d54ws 1z3gdssy61civ.86a103lgsdxf 13nxzmlwnok0p.5jy8fd57eddg je2t7648st8j.2ily4zhh4hl0t 28unl96oexkzs.2jsueoz7ee4to 3bonal3ujr0dn.w0z2mrvupcjh rwes2j0uc7tt.30rumzxv718kp 39nisgzuhrssn.14mb0wcid5ol1 36fj2r89z1a94.3ljytyniwqtf0 1qhhus194xinr.3ua44hkfh9cad px3nlzotkxbr.1zefoixi5204g 2du9qmtnd65pr.9ulz5ktud66o 2pwbxmm7pennv.dtcgm9uodo9y 2d23yz4fct72m.1cm4ddnzq9auy 14p2ipzmn9sux.1ldaa38537w31 nncn4sb1c0aa.34cnk8y918qyg 3950kts1c6ewc.3g7b6ipr8mg3c puoq62gpws72.ow5bo23nq046 3kg9d0yrc2xc3.2ragd8v0qhnsq
+serializedKlibFingerprint=36qyszwnqfhis.1itnwhiqykr11
+unique_name=com.yusubov.compsebook\:composebook
+wasm_targets=wasm-js
