@@ -1,13 +1,21 @@
-build
-local.properties
+# Build outputs
+**/build/
 
-.kotlin
-.idea
-.gradle
-
-.DS_Store
-
+# Gradle
+.gradle/
+gradle/wrapper/gradle-wrapper.jar
 gradlew
 gradlew.bat
 
-kotlin-js-store
+# Kotlin
+.kotlin/
+kotlin-js-store/
+
+# IDE
+.idea/
+
+# Android
+local.properties
+
+# macOS
+.DS_Store
