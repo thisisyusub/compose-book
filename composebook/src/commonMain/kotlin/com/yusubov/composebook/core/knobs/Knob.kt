@@ -2,12 +2,12 @@ package com.yusubov.composebook.core.knobs
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import com.yusubov.composebook.ui.foundation.components.CBText
 import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 @Stable
@@ -29,13 +29,13 @@ abstract class Knob<T>(
     @Composable
     open fun Render() {
         Column(verticalArrangement = Arrangement.spacedBy(ComposeBookTheme.spacing.xs)) {
-            Text(
+            CBText(
                 text = label,
                 style = ComposeBookTheme.typography.label,
                 color = ComposeBookTheme.colors.text,
             )
             if (!description.isNullOrBlank()) {
-                Text(
+                CBText(
                     text = description,
                     style = ComposeBookTheme.typography.bodySmall,
                     color = ComposeBookTheme.colors.textSecondary,

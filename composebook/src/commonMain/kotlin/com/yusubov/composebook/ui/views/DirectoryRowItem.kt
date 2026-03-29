@@ -5,19 +5,18 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.FolderCopy
 import androidx.compose.material.icons.filled.FolderOpen
 import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import com.yusubov.composebook.ui.foundation.components.CBIcon
+import com.yusubov.composebook.ui.foundation.components.CBText
 import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 @Composable
@@ -41,21 +40,20 @@ internal fun DirectoryRowItem(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(ComposeBookTheme.spacing.sm),
     ) {
-        Icon(
+        // Expand/Collapse Chevron
+        CBIcon(
             imageVector = if (expanded) Icons.Default.KeyboardArrowDown
             else Icons.AutoMirrored.Filled.KeyboardArrowRight,
-            contentDescription = null,
-            modifier = Modifier.size(ComposeBookTheme.sizes.iconMd),
             tint = ComposeBookTheme.colors.textSecondary,
+            size = ComposeBookTheme.sizes.iconMd
         )
-        Icon(
+        CBIcon(
             imageVector = if (expanded) Icons.Default.FolderOpen
             else Icons.Default.FolderCopy,
-            contentDescription = null,
-            modifier = Modifier.size(ComposeBookTheme.sizes.iconMd),
             tint = ComposeBookTheme.colors.text,
+            size = ComposeBookTheme.sizes.iconMd
         )
-        Text(
+        CBText(
             text = name,
             style = ComposeBookTheme.typography.body,
             fontWeight = FontWeight.SemiBold,

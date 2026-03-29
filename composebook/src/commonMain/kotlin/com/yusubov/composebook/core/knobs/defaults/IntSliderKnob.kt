@@ -4,11 +4,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.yusubov.composebook.core.knobs.Knob
 import com.yusubov.composebook.ui.foundation.components.CBSlider
+import com.yusubov.composebook.ui.foundation.components.CBText
 import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 internal class IntSliderKnob(
@@ -33,12 +33,12 @@ internal class IntSliderKnob(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-                Text(
+                CBText(
                     text = value.toString(),
                     style = ComposeBookTheme.typography.label,
                     color = ComposeBookTheme.colors.text,
                 )
-                Text(
+                CBText(
                     text = "${range.first}..${range.last}",
                     style = ComposeBookTheme.typography.caption,
                     color = ComposeBookTheme.colors.textSecondary,

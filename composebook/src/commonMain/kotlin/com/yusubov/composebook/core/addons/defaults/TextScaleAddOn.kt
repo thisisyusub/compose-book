@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -16,6 +15,7 @@ import androidx.compose.ui.unit.Density
 import com.yusubov.composebook.core.addons.Addon
 import com.yusubov.composebook.core.utils.formatFloat
 import com.yusubov.composebook.ui.foundation.components.CBSlider
+import com.yusubov.composebook.ui.foundation.components.CBText
 import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 import kotlin.math.roundToInt
 
@@ -46,15 +46,15 @@ internal fun TextScaleAddonPanel(
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(ComposeBookTheme.spacing.sm)) {
         Row(
-            Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Text(
+            CBText(
                 text = "Scale: ${(scale * 100).roundToInt()}%",
                 style = ComposeBookTheme.typography.bodySmall,
                 color = ComposeBookTheme.colors.textSecondary,
             )
-            Text(
+            CBText(
                 text = "${formatFloat(scale, 2)}x",
                 style = ComposeBookTheme.typography.bodySmall,
                 color = ComposeBookTheme.colors.textSecondary,

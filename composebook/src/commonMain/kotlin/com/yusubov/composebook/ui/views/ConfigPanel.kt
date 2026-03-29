@@ -3,7 +3,6 @@ package com.yusubov.composebook.ui.views
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -12,6 +11,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.yusubov.composebook.core.addons.Addon
 import com.yusubov.composebook.core.knobs.KnobScope
+import com.yusubov.composebook.ui.foundation.components.CBHorizontalDivider
 import com.yusubov.composebook.ui.foundation.components.CBTab
 import com.yusubov.composebook.ui.foundation.components.CBTabRow
 import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
@@ -45,11 +45,7 @@ internal fun ConfigPanel(
                 }
             }
         } else {
-            // Fallback divider if there's only 1 or 0 tabs
-            HorizontalDivider(
-                color = ComposeBookTheme.colors.border,
-                thickness = ComposeBookTheme.sizes.divider
-            )
+            CBHorizontalDivider()
         }
 
         when (selectedTab) {
