@@ -14,6 +14,8 @@ internal fun CBNavigationBar(
     modifier: Modifier = Modifier,
     content: @Composable RowScope.() -> Unit,
 ) {
+    val bottomInsets = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -23,7 +25,7 @@ internal fun CBNavigationBar(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .navigationBarsPadding()
+                .padding(bottom = bottomInsets)
                 .height(ComposeBookTheme.sizes.inputHeight * 1.5f),
             verticalAlignment = Alignment.CenterVertically,
             content = content
