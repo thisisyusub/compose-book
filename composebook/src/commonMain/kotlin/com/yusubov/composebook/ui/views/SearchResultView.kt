@@ -12,18 +12,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.yusubov.composebook.core.models.NavigationPath
 import com.yusubov.composebook.core.navigation.NavigationState
 import com.yusubov.composebook.core.navigation.SearchEntry
+import com.yusubov.composebook.ui.foundation.components.CBText
+import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 @Composable
 internal fun SearchResultsView(
@@ -35,20 +33,22 @@ internal fun SearchResultsView(
 
     if (results.isEmpty()) {
         Box(
-            modifier.fillMaxWidth().padding(32.dp),
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(ComposeBookTheme.spacing.xl), // 32.dp
             contentAlignment = Alignment.Center,
         ) {
-            Text(
-                "No results found",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            CBText(
+                text = "No results found",
+                style = ComposeBookTheme.typography.bodySmall,
+                color = ComposeBookTheme.colors.textSecondary,
             )
         }
     } else {
         LazyColumn(
             modifier = modifier,
-            contentPadding = PaddingValues(8.dp),
-            verticalArrangement = Arrangement.spacedBy(2.dp),
+            contentPadding = PaddingValues(ComposeBookTheme.spacing.sm), // 8.dp
+            verticalArrangement = Arrangement.spacedBy(ComposeBookTheme.spacing.xs), // 2-4.dp
         ) {
             items(results, key = { it.path.fullPath }) { entry ->
                 SearchResultItem(
@@ -68,29 +68,31 @@ private fun SearchResultItem(
     onClick: () -> Unit,
 ) {
     Row(
-        Modifier
+        modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(8.dp))
+            .clip(RoundedCornerShape(ComposeBookTheme.radii.md))
             .background(
-                if (selected) MaterialTheme.colorScheme.primaryContainer
+                if (selected) ComposeBookTheme.colors.surfaceVariant
                 else Color.Transparent
             )
             .clickable(onClick = onClick)
-            .padding(horizontal = 12.dp, vertical = 8.dp),
+            .padding(
+                horizontal = ComposeBookTheme.spacing.md, // 12.dp
+                vertical = ComposeBookTheme.spacing.sm    // 8.dp
+            ),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column {
-            Text(
+            CBText(
                 text = entry.path.useCase.name,
-                style = MaterialTheme.typography.bodyMedium,
-                color = if (selected) MaterialTheme.colorScheme.primary
-                else MaterialTheme.colorScheme.onSurface,
+                style = ComposeBookTheme.typography.body,
+                color = if (selected) ComposeBookTheme.colors.component
+                else ComposeBookTheme.colors.text,
             )
-            Text(
+            CBText(
                 text = entry.path.directories.joinToString(" > "),
-                style = MaterialTheme.typography.bodySmall,
-                fontSize = 10.sp,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                style = ComposeBookTheme.typography.caption,
+                color = ComposeBookTheme.colors.textSecondary,
             )
         }
     }

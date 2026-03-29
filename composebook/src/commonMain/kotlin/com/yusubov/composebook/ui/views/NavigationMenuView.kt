@@ -6,15 +6,14 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.yusubov.composebook.core.navigation.DirectoryNode
 import com.yusubov.composebook.core.navigation.NavigationNode
 import com.yusubov.composebook.core.navigation.NavigationState
 import com.yusubov.composebook.core.navigation.UseCaseNode
+import com.yusubov.composebook.ui.foundation.components.CBHorizontalDivider
+import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 @Composable
 internal fun NavigationMenuView(
@@ -22,17 +21,19 @@ internal fun NavigationMenuView(
     modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier.fillMaxHeight().background(MaterialTheme.colorScheme.surface),
+        modifier = modifier
+            .fillMaxHeight()
+            .background(ComposeBookTheme.colors.surface),
     ) {
         SearchField(state)
-        HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f))
-
+        CBHorizontalDivider()
         if (state.searchQuery.isNotBlank()) {
             SearchResultsView(state, { state.select(it) })
         } else {
             LazyColumn(
                 modifier = modifier,
-                contentPadding = PaddingValues(vertical = 8.dp),
+                // Using theme spacing for vertical padding
+                contentPadding = PaddingValues(vertical = ComposeBookTheme.spacing.sm),
             ) {
                 renderNodes(state.rootNodes, 0, state)
             }

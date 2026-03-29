@@ -1,10 +1,8 @@
 package com.yusubov.composebook.ui.views
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -13,6 +11,8 @@ import com.yusubov.composebook.core.addons.Addon
 import com.yusubov.composebook.core.knobs.KnobScope
 import com.yusubov.composebook.core.models.UseCaseScope
 import com.yusubov.composebook.core.navigation.NavigationState
+import com.yusubov.composebook.ui.foundation.components.CBText
+import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 @Composable
 internal fun UseCaseView(
@@ -21,12 +21,18 @@ internal fun UseCaseView(
     addonList: List<Addon>,
     modifier: Modifier = Modifier,
 ) {
-    Surface(modifier = modifier) {
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .background(ComposeBookTheme.colors.background)
+    ) {
         val useCase = navigationState.getSelectedUseCase()
+
         if (useCase != null) {
             val scope = remember(knobScope) { UseCaseScope(knob = knobScope) }
+
             Box(
-                Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center,
             ) {
                 AddonWrapper(addonList) {
@@ -35,12 +41,13 @@ internal fun UseCaseView(
             }
         } else {
             Box(
-                Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center,
             ) {
-                Text(
-                    "Select a use-case",
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                CBText(
+                    text = "Select a use-case",
+                    style = ComposeBookTheme.typography.body,
+                    color = ComposeBookTheme.colors.textSecondary,
                 )
             }
         }

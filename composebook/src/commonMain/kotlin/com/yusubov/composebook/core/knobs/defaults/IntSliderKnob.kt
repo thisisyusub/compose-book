@@ -11,7 +11,7 @@ import com.yusubov.composebook.core.knobs.Knob
 import com.yusubov.composebook.ui.foundation.components.CBSlider
 import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
-class IntSliderKnob(
+internal class IntSliderKnob(
     label: String,
     initialValue: Int = 0,
     val range: IntRange = 0..100,

@@ -4,7 +4,7 @@ import androidx.compose.runtime.Stable
 import com.yusubov.composebook.core.models.NavigationPath
 
 @Stable
-class SearchEntry(
+internal class SearchEntry(
     val path: NavigationPath,
     private val searchText: String,
 ) {

@@ -6,11 +6,11 @@ import androidx.compose.runtime.setValue
 import com.yusubov.composebook.core.models.NavigationPath
 import com.yusubov.composebook.core.models.UseCase
 
-sealed class NavigationNode {
+internal sealed class NavigationNode {
     abstract val key: String
 }
 
-class DirectoryNode(
+internal class DirectoryNode(
     override val key: String,
     val name: String,
     val children: List<NavigationNode>,
@@ -18,7 +18,7 @@ class DirectoryNode(
     var expanded: Boolean by mutableStateOf(false)
 }
 
-class UseCaseNode(
+internal class UseCaseNode(
     override val key: String,
     val path: NavigationPath,
 ) : NavigationNode()

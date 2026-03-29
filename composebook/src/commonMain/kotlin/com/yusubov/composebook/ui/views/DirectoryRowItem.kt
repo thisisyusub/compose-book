@@ -12,14 +12,13 @@ import androidx.compose.material.icons.filled.FolderCopy
 import androidx.compose.material.icons.filled.FolderOpen
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
+import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 @Composable
 internal fun DirectoryRowItem(
@@ -34,31 +33,33 @@ internal fun DirectoryRowItem(
             .fillMaxWidth()
             .clickable(onClick = onClick)
             .padding(
-                start = (8 + 8 * indent).dp,
-                end = 8.dp,
-                top = 4.dp,
-                bottom = 4.dp,
+                start = ComposeBookTheme.spacing.sm + (ComposeBookTheme.spacing.sm * indent),
+                end = ComposeBookTheme.spacing.sm,
+                top = ComposeBookTheme.spacing.xs,
+                bottom = ComposeBookTheme.spacing.xs,
             ),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
+        horizontalArrangement = Arrangement.spacedBy(ComposeBookTheme.spacing.sm),
     ) {
         Icon(
-            if (expanded) Icons.Default.KeyboardArrowDown
+            imageVector = if (expanded) Icons.Default.KeyboardArrowDown
             else Icons.AutoMirrored.Filled.KeyboardArrowRight,
             contentDescription = null,
-            modifier = Modifier.size(16.dp),
-            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.size(ComposeBookTheme.sizes.iconMd),
+            tint = ComposeBookTheme.colors.textSecondary,
         )
         Icon(
-            if (expanded) Icons.Default.FolderOpen else Icons.Default.FolderCopy,
+            imageVector = if (expanded) Icons.Default.FolderOpen
+            else Icons.Default.FolderCopy,
             contentDescription = null,
-            modifier = Modifier.size(16.dp),
-            tint = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.size(ComposeBookTheme.sizes.iconMd),
+            tint = ComposeBookTheme.colors.text,
         )
         Text(
-            name,
-            style = MaterialTheme.typography.bodyMedium,
+            text = name,
+            style = ComposeBookTheme.typography.body,
             fontWeight = FontWeight.SemiBold,
+            color = ComposeBookTheme.colors.text,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
         )

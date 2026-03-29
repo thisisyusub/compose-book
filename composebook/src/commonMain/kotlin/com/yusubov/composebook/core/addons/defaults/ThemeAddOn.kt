@@ -15,7 +15,7 @@ data class ThemeOption<T>(
     val data: T,
 )
 
-class ThemeAddon<T>(
+internal class ThemeAddon<T>(
     private val themes: List<ThemeOption<T>>,
     private val builder: @Composable (data: T, content: @Composable () -> Unit) -> Unit,
 ) : Addon {

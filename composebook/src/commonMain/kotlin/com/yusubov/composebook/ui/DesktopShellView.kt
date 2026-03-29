@@ -4,14 +4,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.yusubov.composebook.core.addons.Addon
 import com.yusubov.composebook.core.knobs.KnobScope
 import com.yusubov.composebook.core.navigation.NavigationState
+import com.yusubov.composebook.ui.foundation.components.CBVerticalDivider
+import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 import com.yusubov.composebook.ui.views.ConfigPanel
 import com.yusubov.composebook.ui.views.NavigationMenuView
 import com.yusubov.composebook.ui.views.UseCaseView
@@ -22,27 +21,27 @@ internal fun DesktopShellView(
     navigationState: NavigationState,
     addonList: List<Addon>,
 ) {
-    Row(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
-        // Left: Navigation
+    Row(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(ComposeBookTheme.colors.background)
+    ) {
         NavigationMenuView(
-            modifier = Modifier.width(280.dp),
+            modifier = Modifier.width(ComposeBookTheme.sizes.navigationWidth),
             state = navigationState,
         )
-        VerticalDivider()
-
-        // Center: Preview
+        CBVerticalDivider()
         UseCaseView(
             modifier = Modifier.weight(1f),
             knobScope = knobScope,
             navigationState = navigationState,
             addonList = addonList,
         )
-        VerticalDivider()
-
+        CBVerticalDivider()
         ConfigPanel(
             knobScope = knobScope,
             addonList = addonList,
-            modifier = Modifier.width(300.dp),
+            modifier = Modifier.width(ComposeBookTheme.sizes.configWidth), // 300.dp
         )
     }
 }

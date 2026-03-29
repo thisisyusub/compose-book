@@ -1,8 +1,6 @@
 package com.yusubov.composebook.core.models
 
-import androidx.compose.runtime.saveable.listSaver
-
-data class NavigationPath(
+internal data class NavigationPath(
     val directories: List<String>,
     val useCase: UseCase,
 ) {

@@ -9,7 +9,7 @@ import com.yusubov.composebook.core.knobs.Knob
 import com.yusubov.composebook.ui.foundation.components.CBToggle
 import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
-class BooleanKnob(
+internal class BooleanKnob(
     label: String,
     initialValue: Boolean = false,
     description: String? = null,

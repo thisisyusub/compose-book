@@ -21,5 +21,8 @@ internal data class ComposeBookSizes(
     val divider: Dp = 1.dp,
     val borderWidth: Dp = 1.dp,
     val borderWidthFocused: Dp = 1.5.dp,
+    val indicator: Dp = 6.dp,
+    val navigationWidth: Dp = 280.dp,
+    val configWidth: Dp = 300.dp,
 )
 

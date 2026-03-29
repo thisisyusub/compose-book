@@ -12,7 +12,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import com.yusubov.composebook.core.knobs.Knob
 import com.yusubov.composebook.ui.foundation.components.CBInputField
 
-class IntKnob(
+internal class IntKnob(
     label: String,
     initialValue: Int = 0,
     description: String? = null,

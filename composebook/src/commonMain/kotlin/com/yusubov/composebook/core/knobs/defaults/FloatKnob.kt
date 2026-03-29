@@ -12,7 +12,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import com.yusubov.composebook.core.knobs.Knob
 import com.yusubov.composebook.ui.foundation.components.CBInputField
 
-class FloatKnob(
+internal class FloatKnob(
     label: String,
     initialValue: Float = 0f,
     description: String? = null,

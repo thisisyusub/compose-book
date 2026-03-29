@@ -8,9 +8,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,8 +17,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.times
 import com.yusubov.composebook.core.models.UseCase
+import com.yusubov.composebook.ui.foundation.components.CBText
+import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 @Composable
 internal fun UseCaseRowItem(
@@ -32,31 +33,38 @@ internal fun UseCaseRowItem(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 4.dp)
-            .clip(RoundedCornerShape(8.dp))
+            .padding(horizontal = ComposeBookTheme.spacing.xs)
+            .clip(RoundedCornerShape(ComposeBookTheme.radii.md))
             .background(
-                if (selected) MaterialTheme.colorScheme.primaryContainer
+                if (selected) ComposeBookTheme.colors.surfaceVariant
                 else Color.Transparent
             )
             .clickable(onClick = onSelect)
-            .padding(start = (16 + indent * 16).dp, end = 12.dp, top = 6.dp, bottom = 6.dp),
+            .padding(
+                start = ComposeBookTheme.spacing.lg + (indent * ComposeBookTheme.spacing.lg),
+                end = ComposeBookTheme.spacing.md,
+                top = ComposeBookTheme.spacing.xs,
+                bottom = ComposeBookTheme.spacing.xs
+            ),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
+        horizontalArrangement = Arrangement.spacedBy(ComposeBookTheme.spacing.xs),
     ) {
         Box(
-            Modifier.size(6.dp)
+            modifier = Modifier
+                .size(ComposeBookTheme.sizes.indicator)
                 .background(
-                    if (selected) MaterialTheme.colorScheme.primary
-                    else MaterialTheme.colorScheme.outline,
-                    RoundedCornerShape(3.dp),
+                    color = if (selected) ComposeBookTheme.colors.component
+                    else ComposeBookTheme.colors.border,
+                    shape = CircleShape
                 )
         )
-        Text(
-            useCase.name,
-            style = MaterialTheme.typography.bodySmall,
+
+        CBText(
+            text = useCase.name,
+            style = ComposeBookTheme.typography.bodySmall,
             fontWeight = if (selected) FontWeight.Medium else FontWeight.Normal,
-            color = if (selected) MaterialTheme.colorScheme.primary
-            else MaterialTheme.colorScheme.onSurface,
+            color = if (selected) ComposeBookTheme.colors.component
+            else ComposeBookTheme.colors.text,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
         )

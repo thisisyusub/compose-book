@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import com.yusubov.composebook.core.knobs.Knob
 import com.yusubov.composebook.ui.foundation.components.CBInputField
 
-class StringKnob(
+internal class StringKnob(
     label: String,
     initialValue: String = "",
     description: String? = null,

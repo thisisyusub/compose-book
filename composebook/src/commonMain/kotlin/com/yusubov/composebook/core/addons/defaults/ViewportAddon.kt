@@ -46,7 +46,7 @@ data class DeviceViewport(
     }
 }
 
-class ViewportAddon(
+internal class ViewportAddon(
     private val viewports: List<DeviceViewport> = DeviceViewport.defaults,
 ) : Addon {
     override val name = "Viewport"

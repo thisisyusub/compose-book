@@ -4,19 +4,17 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.PrimaryTabRow
-import androidx.compose.material3.Tab
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import com.yusubov.composebook.core.addons.Addon
 import com.yusubov.composebook.core.knobs.KnobScope
+import com.yusubov.composebook.ui.foundation.components.CBTab
+import com.yusubov.composebook.ui.foundation.components.CBTabRow
+import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 @Composable
 internal fun ConfigPanel(
@@ -31,28 +29,29 @@ internal fun ConfigPanel(
     }
 
     Column(
-        modifier
+        modifier = modifier
             .fillMaxHeight()
-            .background(MaterialTheme.colorScheme.surface),
+            .background(ComposeBookTheme.colors.surface),
     ) {
         if (tabs.size > 1) {
-            PrimaryTabRow(selectedTabIndex = selectedTab) {
+            CBTabRow {
                 tabs.forEachIndexed { i, title ->
-                    Tab(
+                    CBTab(
                         selected = selectedTab == i,
                         onClick = { selectedTab = i },
-                        text = {
-                            Text(
-                                title,
-                                style = MaterialTheme.typography.bodySmall,
-                                fontWeight = FontWeight.Medium,
-                            )
-                        },
+                        text = title,
+                        modifier = Modifier.weight(1f),
                     )
                 }
             }
+        } else {
+            // Fallback divider if there's only 1 or 0 tabs
+            HorizontalDivider(
+                color = ComposeBookTheme.colors.border,
+                thickness = ComposeBookTheme.sizes.divider
+            )
         }
-        HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f))
+
         when (selectedTab) {
             0 -> KnobListView(knobScope)
             1 -> AddonListView(addonList = addonList)

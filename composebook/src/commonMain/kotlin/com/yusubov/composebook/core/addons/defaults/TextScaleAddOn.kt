@@ -19,7 +19,7 @@ import com.yusubov.composebook.ui.foundation.components.CBSlider
 import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 import kotlin.math.roundToInt
 
-class TextScaleAddon(initialScale: Float = 1f) : Addon {
+internal class TextScaleAddon(initialScale: Float = 1f) : Addon {
     override val name = "Text Scale"
     var scale: Float by mutableStateOf(initialScale)
 

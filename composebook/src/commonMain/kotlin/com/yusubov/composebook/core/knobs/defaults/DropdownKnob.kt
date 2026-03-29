@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import com.yusubov.composebook.core.knobs.Knob
 import com.yusubov.composebook.ui.foundation.components.CBDropDown
 
-class DropdownKnob<T>(
+internal class DropdownKnob<T>(
     label: String,
     val options: List<T>,
     initialValue: T = options.first(),
