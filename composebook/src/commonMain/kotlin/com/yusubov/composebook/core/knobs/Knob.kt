@@ -2,16 +2,13 @@ package com.yusubov.composebook.core.knobs
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 @Stable
 abstract class Knob<T>(
@@ -31,18 +28,17 @@ abstract class Knob<T>(
 
     @Composable
     open fun Render() {
-        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        Column(verticalArrangement = Arrangement.spacedBy(ComposeBookTheme.spacing.xs)) {
             Text(
-                label,
-                style = MaterialTheme.typography.labelMedium,
-                fontWeight = FontWeight.Medium,
+                text = label,
+                style = ComposeBookTheme.typography.label,
+                color = ComposeBookTheme.colors.text,
             )
             if (!description.isNullOrBlank()) {
                 Text(
-                    description,
-                    style = MaterialTheme.typography.bodySmall,
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    text = description,
+                    style = ComposeBookTheme.typography.bodySmall,
+                    color = ComposeBookTheme.colors.textSecondary,
                 )
             }
             Content(value) { update(it) }

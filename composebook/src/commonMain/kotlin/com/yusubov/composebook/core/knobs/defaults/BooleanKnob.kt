@@ -2,13 +2,12 @@ package com.yusubov.composebook.core.knobs.defaults
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.unit.dp
 import com.yusubov.composebook.core.knobs.Knob
+import com.yusubov.composebook.ui.foundation.components.CBToggle
+import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 class BooleanKnob(
     label: String,
@@ -22,16 +21,14 @@ class BooleanKnob(
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(ComposeBookTheme.spacing.sm),
         ) {
-            Switch(checked = value, onCheckedChange = onValueChange)
+            CBToggle(checked = value, onCheckedChange = onValueChange)
             Text(
-                if (value) "true" else "false",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                text = if (value) "true" else "false",
+                style = ComposeBookTheme.typography.bodySmall,
+                color = ComposeBookTheme.colors.textSecondary,
             )
         }
     }
 }
-
-

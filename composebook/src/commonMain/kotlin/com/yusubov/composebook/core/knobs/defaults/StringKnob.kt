@@ -1,13 +1,10 @@
 package com.yusubov.composebook.core.knobs.defaults
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.yusubov.composebook.core.knobs.Knob
+import com.yusubov.composebook.ui.foundation.components.CBInputField
 
 class StringKnob(
     label: String,
@@ -19,13 +16,10 @@ class StringKnob(
         value: String,
         onValueChange: (String) -> Unit,
     ) {
-        OutlinedTextField(
+        CBInputField(
             value = value,
             onValueChange = onValueChange,
             modifier = Modifier.fillMaxWidth(),
-            textStyle = MaterialTheme.typography.bodySmall,
-            singleLine = true,
-            shape = RoundedCornerShape(8.dp),
         )
     }
 }

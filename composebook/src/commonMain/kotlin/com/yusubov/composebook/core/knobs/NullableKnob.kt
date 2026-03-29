@@ -1,15 +1,17 @@
 package com.yusubov.composebook.core.knobs
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.MaterialTheme
+import com.yusubov.composebook.ui.foundation.components.CBCheckBox
+
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 fun <T : Any> Knob<T>.nullable(): NullableKnob<T> = NullableKnob(this)
 
@@ -35,7 +37,7 @@ class NullableKnob<T : Any>(
 
     @Composable
     override fun Render() {
-        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        Column(verticalArrangement = Arrangement.spacedBy(ComposeBookTheme.spacing.xs)) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -43,23 +45,23 @@ class NullableKnob<T : Any>(
             ) {
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        label,
-                        style = MaterialTheme.typography.labelMedium,
-                        fontWeight = FontWeight.Medium,
+                        text = label,
+                        style = ComposeBookTheme.typography.label,
+                        color = ComposeBookTheme.colors.text,
                     )
                     if (!description.isNullOrBlank()) {
                         Text(
-                            description,
-                            style = MaterialTheme.typography.bodySmall,
-                            fontSize = 11.sp,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            text = description,
+                            style = ComposeBookTheme.typography.caption,
+                            color = ComposeBookTheme.colors.textSecondary,
                         )
                     }
                 }
-                Checkbox(
+                CBCheckBox(
                     checked = value != null,
                     onCheckedChange = { checked ->
-                        if (checked) update(inner.value) else update(null)
+                        if (checked) update(inner.value)
+                        else update(null)
                     },
                 )
             }
@@ -71,4 +73,3 @@ class NullableKnob<T : Any>(
         }
     }
 }
-

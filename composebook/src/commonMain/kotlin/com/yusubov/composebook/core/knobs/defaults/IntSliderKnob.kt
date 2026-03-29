@@ -4,21 +4,19 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
 import com.yusubov.composebook.core.knobs.Knob
+import com.yusubov.composebook.ui.foundation.components.CBSlider
+import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 class IntSliderKnob(
     label: String,
     initialValue: Int = 0,
     val range: IntRange = 0..100,
     val step: Int = 1,
-    description: String = "",
+    description: String? = null,
 ) : Knob<Int>(label, initialValue, description) {
 
     @Composable
@@ -32,22 +30,21 @@ class IntSliderKnob(
 
         Column {
             Row(
-                Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text(
-                    value.toString(),
-                    style = MaterialTheme.typography.bodySmall,
-                    fontWeight = FontWeight.SemiBold,
+                    text = value.toString(),
+                    style = ComposeBookTheme.typography.label,
+                    color = ComposeBookTheme.colors.text,
                 )
                 Text(
-                    "${range.first}..${range.last}",
-                    style = MaterialTheme.typography.bodySmall,
-                    fontSize = 10.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    text = "${range.first}..${range.last}",
+                    style = ComposeBookTheme.typography.caption,
+                    color = ComposeBookTheme.colors.textSecondary,
                 )
             }
-            Slider(
+            CBSlider(
                 value = value.toFloat().coerceIn(min, max),
                 onValueChange = { onValueChange(it.toInt()) },
                 valueRange = min..max,

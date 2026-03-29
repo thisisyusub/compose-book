@@ -5,6 +5,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.mutableStateMapOf
 import com.yusubov.composebook.core.knobs.defaults.BooleanKnob
+import com.yusubov.composebook.core.knobs.defaults.DropdownKnob
+import com.yusubov.composebook.core.knobs.defaults.FloatKnob
+import com.yusubov.composebook.core.knobs.defaults.IntKnob
 import com.yusubov.composebook.core.knobs.defaults.IntSliderKnob
 import com.yusubov.composebook.core.knobs.defaults.StringKnob
 
@@ -20,6 +23,20 @@ class KnobScope {
     ): String = of(StringKnob(label, initialValue, description))
 
     @Composable
+    fun int(
+        label: String,
+        initialValue: Int = 0,
+        description: String? = null,
+    ): Int = of(IntKnob(label, initialValue, description))
+
+    @Composable
+    fun float(
+        label: String,
+        initialValue: Float = 0f,
+        description: String? = null,
+    ): Float = of(FloatKnob(label, initialValue, description))
+
+    @Composable
     fun boolean(
         label: String,
         initialValue: Boolean = false,
@@ -31,7 +48,34 @@ class KnobScope {
         label: String,
         initialValue: Int = 0,
         range: IntRange = 0..100,
-    ): Int = of(IntSliderKnob(label, initialValue, range))
+        step: Int = 1,
+        description: String = "",
+    ): Int = of(
+        IntSliderKnob(
+            label = label,
+            initialValue = initialValue,
+            range,
+            step = step,
+            description = description,
+        )
+    )
+
+    @Composable
+    fun <T> dropdown(
+        label: String,
+        options: List<T>,
+        initialValue: T = options.first(),
+        description: String? = null,
+        labelMapper: (T) -> String = { it.toString() },
+    ): T = of(
+        DropdownKnob(
+            label = label,
+            options = options,
+            initialValue = initialValue,
+            labelMapper = labelMapper,
+            description = description,
+        )
+    )
 
     @Composable
     fun <T> of(knob: Knob<T>): T {
