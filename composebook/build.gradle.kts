@@ -3,11 +3,11 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.androidLibrary)
-    `maven-publish`
+    id("maven-publish") // 👈 This MUST be here
 }
 
-group = "com.yusubov.composebook"
-version = "0.1.0"
+group = "com.github.thisisyusub"
+version = "0.1.1"
 
 android {
     namespace = "com.yusubov.composebook"
@@ -57,4 +57,10 @@ kotlin {
     }
 }
 
-
+publishing {
+    publications {
+        // This automatically picks up all KMP targets (Android, Desktop, iOS, Wasm)
+        // No manual configuration usually needed for KMP 2.0+,
+        // but the block must exist for some build tools to trigger.
+    }
+}
