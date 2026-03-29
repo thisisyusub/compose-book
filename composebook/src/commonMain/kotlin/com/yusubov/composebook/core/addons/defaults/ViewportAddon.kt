@@ -4,14 +4,15 @@ package com.yusubov.composebook.core.addons.defaults
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.yusubov.composebook.core.addons.Addon
+import com.yusubov.composebook.ui.foundation.components.CBDropDown
+import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 data class DeviceViewport(
     val name: String,
@@ -54,62 +55,32 @@ class ViewportAddon(
     val selectedViewport: DeviceViewport
         get() = viewports.getOrElse(selectedIndex) { DeviceViewport.None }
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun PanelContent() {
-        var expanded by remember { mutableStateOf(false) }
         val selected = selectedViewport
 
-        ExposedDropdownMenuBox(
-            expanded = expanded,
-            onExpandedChange = { expanded = !expanded },
-        ) {
-            OutlinedTextField(
-                value = if (selected.widthDp > 0) "${selected.name} " +
-                        "(${selected.widthDp}×${selected.heightDp})"
-                else selected.name,
-                onValueChange = {},
-                readOnly = true,
-                modifier = Modifier.fillMaxWidth()
-                    .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable),
-                textStyle = MaterialTheme.typography.bodySmall,
-                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded) },
-                shape = RoundedCornerShape(8.dp),
-            )
-            ExposedDropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false },
-            ) {
-                viewports.forEachIndexed { index, viewport ->
-                    DropdownMenuItem(
-                        text = {
-                            Row(
-                                Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically,
-                            ) {
-                                Text(
-                                    viewport.name,
-                                    style = MaterialTheme.typography.bodySmall,
-                                )
-                                if (viewport.widthDp > 0) {
-                                    Text(
-                                        "${viewport.widthDp}×${viewport.heightDp}",
-                                        style = MaterialTheme.typography.bodySmall,
-                                        color = MaterialTheme.colorScheme.primary,
-                                        fontSize = 11.sp,
-                                    )
-                                }
-                            }
-                        },
-                        onClick = {
-                            selectedIndex = index
-                            expanded = false
-                        },
-                    )
-                }
-            }
+        // Format the options for our CBDropDown component
+        val options = viewports.map { vp ->
+            if (vp.widthDp > 0) "${vp.name} (${vp.widthDp}×${vp.heightDp})" else vp.name
         }
+
+        val selectedOptionString = if (selected.widthDp > 0) {
+            "${selected.name} (${selected.widthDp}×${selected.heightDp})"
+        } else {
+            selected.name
+        }
+
+        CBDropDown(
+            options = options,
+            selectedOption = selectedOptionString,
+            onOptionSelected = { selectedString ->
+                val index = options.indexOf(selectedString)
+                if (index != -1) {
+                    selectedIndex = index
+                }
+            },
+            modifier = Modifier.fillMaxWidth()
+        )
     }
 
     @Composable
@@ -120,25 +91,24 @@ class ViewportAddon(
             content()
         } else {
             Column(
-                modifier = Modifier.padding(all = 8.dp),
+                modifier = Modifier.padding(all = ComposeBookTheme.spacing.sm),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(ComposeBookTheme.spacing.sm),
             ) {
                 // Device title
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(ComposeBookTheme.spacing.sm),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        vp.name,
-                        style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.primary,
+                        text = vp.name,
+                        style = ComposeBookTheme.typography.label,
+                        color = ComposeBookTheme.colors.text,
                     )
                     Text(
-                        "${vp.widthDp}×${vp.heightDp}",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.primary,
-                        fontSize = 11.sp,
+                        text = "${vp.widthDp}×${vp.heightDp}",
+                        style = ComposeBookTheme.typography.caption,
+                        color = ComposeBookTheme.colors.textSecondary,
                     )
                 }
 
@@ -146,11 +116,11 @@ class ViewportAddon(
                 Box(
                     modifier = Modifier
                         .size(width = vp.widthDp.dp, height = vp.heightDp.dp)
-                        .clip(RoundedCornerShape(16.dp))
+                        .clip(RoundedCornerShape(ComposeBookTheme.radii.xl))
                         .border(
-                            width = 2.dp,
-                            color = MaterialTheme.colorScheme.primary,
-                            shape = RoundedCornerShape(16.dp)
+                            width = ComposeBookTheme.sizes.borderWidthFocused,
+                            color = ComposeBookTheme.colors.borderFocused,
+                            shape = RoundedCornerShape(ComposeBookTheme.radii.xl)
                         ),
                     contentAlignment = Alignment.Center,
                 ) {

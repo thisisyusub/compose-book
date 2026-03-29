@@ -1,16 +1,14 @@
 package com.yusubov.composebook.core.addons.defaults
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.yusubov.composebook.core.addons.Addon
+import com.yusubov.composebook.ui.foundation.components.CBDropDown
 
 data class ThemeOption<T>(
     val name: String,
@@ -27,46 +25,23 @@ class ThemeAddon<T>(
     val selectedTheme: ThemeOption<T>
         get() = themes.getOrElse(selectedIndex) { themes.first() }
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun PanelContent() {
-        var expanded by remember { mutableStateOf(false) }
+        // Extract the names to feed into our custom dropdown
+        val themeNames = themes.map { it.name }
 
-        ExposedDropdownMenuBox(
-            expanded = expanded,
-            onExpandedChange = { expanded = !expanded },
-        ) {
-            OutlinedTextField(
-                value = selectedTheme.name,
-                onValueChange = {},
-                readOnly = true,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable),
-                textStyle = MaterialTheme.typography.bodySmall,
-                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded) },
-                shape = RoundedCornerShape(8.dp),
-            )
-            ExposedDropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false },
-            ) {
-                themes.forEachIndexed { index, theme ->
-                    DropdownMenuItem(
-                        text = {
-                            Text(
-                                theme.name,
-                                style = MaterialTheme.typography.bodySmall,
-                            )
-                        },
-                        onClick = {
-                            selectedIndex = index
-                            expanded = false
-                        },
-                    )
+        CBDropDown(
+            options = themeNames,
+            selectedOption = selectedTheme.name,
+            onOptionSelected = { selectedName ->
+                // Find the index of the newly selected theme
+                val newIndex = themes.indexOfFirst { it.name == selectedName }
+                if (newIndex != -1) {
+                    selectedIndex = newIndex
                 }
-            }
-        }
+            },
+            modifier = Modifier.fillMaxWidth()
+        )
     }
 
     @Composable

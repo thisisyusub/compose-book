@@ -4,8 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -15,9 +13,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Density
-import androidx.compose.ui.unit.dp
 import com.yusubov.composebook.core.addons.Addon
 import com.yusubov.composebook.core.utils.formatFloat
+import com.yusubov.composebook.ui.foundation.components.CBSlider
+import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 import kotlin.math.roundToInt
 
 class TextScaleAddon(initialScale: Float = 1f) : Addon {
@@ -45,23 +44,23 @@ internal fun TextScaleAddonPanel(
     scale: Float,
     onScaleChanged: (Float) -> Unit,
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    Column(verticalArrangement = Arrangement.spacedBy(ComposeBookTheme.spacing.sm)) {
         Row(
             Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text(
-                "Scale: ${(scale * 100).roundToInt()}%",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.primary,
+                text = "Scale: ${(scale * 100).roundToInt()}%",
+                style = ComposeBookTheme.typography.bodySmall,
+                color = ComposeBookTheme.colors.textSecondary,
             )
             Text(
-                "${formatFloat(scale, 2)}x",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.primary,
+                text = "${formatFloat(scale, 2)}x",
+                style = ComposeBookTheme.typography.bodySmall,
+                color = ComposeBookTheme.colors.textSecondary,
             )
         }
-        Slider(
+        CBSlider(
             value = scale,
             onValueChange = onScaleChanged,
             valueRange = 0.5f..3f,
