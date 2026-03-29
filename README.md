@@ -26,7 +26,7 @@ Add the dependency to your module's `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.yusubov.compsebook:composebook:0.1.0")
+    implementation("com.yusubov.composebook:composebook:0.1.0")
 }
 ```
 

@@ -1,6 +1,11 @@
 package com.yusubov.composebook.sample
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import com.yusubov.composebook.ComposeBook
 import com.yusubov.composebook.core.addons.defaults.ThemeOption
 import com.yusubov.composebook.dsl.DirectoryBuilder
@@ -24,7 +29,14 @@ fun ComposeBookDemo() {
                             LocalAppTypography provides config.typography,
                             LocalAppSpacing provides config.spacing,
                         ) {
-                            content()
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(config.colors.background),
+                                contentAlignment = Alignment.Center,
+                            ) {
+                                content()
+                            }
                         }
                     },
                 )

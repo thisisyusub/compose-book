@@ -6,7 +6,7 @@ plugins {
     `maven-publish`
 }
 
-group = "com.yusubov.compsebook"
+group = "com.yusubov.composebook"
 version = "0.1.0"
 
 android {

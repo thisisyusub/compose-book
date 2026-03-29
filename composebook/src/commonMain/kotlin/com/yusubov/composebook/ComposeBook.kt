@@ -12,6 +12,7 @@ import com.yusubov.composebook.core.navigation.NavigationState
 import com.yusubov.composebook.dsl.ComposeBookConfig
 import com.yusubov.composebook.ui.DesktopShellView
 import com.yusubov.composebook.ui.MobileShellView
+import com.yusubov.composebook.ui.theme.ComposeBookTheme
 
 private const val DESKTOP_BREAKPOINT = 900
 
@@ -19,25 +20,27 @@ private const val DESKTOP_BREAKPOINT = 900
 fun ComposeBook(
     config: ComposeBookConfig,
     modifier: Modifier = Modifier,
-    darkTheme: Boolean = isSystemInDarkTheme(),
 ) {
+    val isDark = isSystemInDarkTheme()
     val navState = remember(config) { NavigationState(config.directories) }
     val selectedPath = navState.selectedPath
     val knobScope = remember(selectedPath) { KnobScope() }
 
-    BoxWithConstraints(modifier.fillMaxSize()) {
-        if (maxWidth >= DESKTOP_BREAKPOINT.dp) {
-            DesktopShellView(
-                knobScope = knobScope,
-                navigationState = navState,
-                addonList = config.addonList,
-            )
-        } else {
-            MobileShellView(
-                knobScope = knobScope,
-                navigationState = navState,
-                addonList = config.addonList,
-            )
+    ComposeBookTheme(darkTheme = isDark) {
+        BoxWithConstraints(modifier.fillMaxSize()) {
+            if (maxWidth >= DESKTOP_BREAKPOINT.dp) {
+                DesktopShellView(
+                    knobScope = knobScope,
+                    navigationState = navState,
+                    addonList = config.addonList,
+                )
+            } else {
+                MobileShellView(
+                    knobScope = knobScope,
+                    navigationState = navState,
+                    addonList = config.addonList,
+                )
+            }
         }
     }
 }

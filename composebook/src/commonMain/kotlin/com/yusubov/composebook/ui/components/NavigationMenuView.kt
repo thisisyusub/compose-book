@@ -1,8 +1,13 @@
 package com.yusubov.composebook.ui.components
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -16,11 +21,22 @@ internal fun NavigationMenuView(
     state: NavigationState,
     modifier: Modifier = Modifier,
 ) {
-    LazyColumn(
-        modifier = modifier,
-        contentPadding = PaddingValues(vertical = 8.dp),
+    Column(
+        modifier.fillMaxHeight().background(MaterialTheme.colorScheme.surface),
     ) {
-        renderNodes(state.rootNodes, 0, state)
+        SearchField(state)
+        HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f))
+
+        if (state.searchQuery.isNotBlank()) {
+            SearchResultsView(state, { state.select(it) })
+        } else {
+            LazyColumn(
+                modifier = modifier,
+                contentPadding = PaddingValues(vertical = 8.dp),
+            ) {
+                renderNodes(state.rootNodes, 0, state)
+            }
+        }
     }
 }
 
