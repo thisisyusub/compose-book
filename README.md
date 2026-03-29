@@ -32,12 +32,21 @@ with your composable components in isolation across Android, iOS, Desktop, and W
 
 ## Installation
 
-Add the dependency to your module's `build.gradle.kts`:
+1. Add this to your settings.gradle.kts or project `build.gradle.kts`:
 
-```kotlin
-dependencies {
-    implementation("com.yusubov.composebook:composebook:0.1.0")
+```gradle
+repositories {
+  maven { url = uri("https://jitpack.io") }
 }
+```
+
+2. Add the dependency
+
+```gradle
+dependencies {
+    implementation("com.github.kenanyusubov:ComposeBook:0.1.0") 
+}
+```
 ```
 
 ## Quick Start
