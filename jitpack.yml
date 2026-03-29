@@ -1,4 +1,4 @@
 jdk:
   - openjdk17
 install:
-  - ./gradlew :compose-book:publishToMavenLocal -Pgroup=com.github.thisisyusub
+  - ./gradlew :composebook:publishToMavenLocal -Pgroup=com.github.thisisyusub -Pversion=0.1.2

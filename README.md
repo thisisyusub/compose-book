@@ -44,7 +44,7 @@ repositories {
 
 ```gradle
 dependencies {
-    implementation("com.github.thisisyusub:compose-book:0.1.0")
+    implementation("com.github.thisisyusub:compose-book:0.1.2")
 }
 ```
 ```
