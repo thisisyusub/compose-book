@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.github.thisisyusub"
-version = "0.1.3"
+version = "0.1.4"
 
 android {
     namespace = "com.yusubov.composebook"
@@ -25,6 +25,8 @@ kotlin {
     jvm("desktop")
 
     androidTarget {
+        publishLibraryVariants("release", "debug")
+
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
         }
