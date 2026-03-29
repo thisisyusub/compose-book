@@ -12,9 +12,9 @@ import androidx.compose.ui.unit.dp
 import com.yusubov.composebook.core.addons.Addon
 import com.yusubov.composebook.core.knobs.KnobScope
 import com.yusubov.composebook.core.navigation.NavigationState
-import com.yusubov.composebook.ui.components.ConfigPanel
-import com.yusubov.composebook.ui.components.NavigationMenuView
-import com.yusubov.composebook.ui.components.UseCaseView
+import com.yusubov.composebook.ui.views.ConfigPanel
+import com.yusubov.composebook.ui.views.NavigationMenuView
+import com.yusubov.composebook.ui.views.UseCaseView
 
 @Composable
 internal fun DesktopShellView(

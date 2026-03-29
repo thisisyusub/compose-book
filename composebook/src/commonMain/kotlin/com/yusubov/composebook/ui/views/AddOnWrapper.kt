@@ -1,4 +1,4 @@
-package com.yusubov.composebook.ui.components
+package com.yusubov.composebook.ui.views
 
 import androidx.compose.runtime.Composable
 import com.yusubov.composebook.core.addons.Addon

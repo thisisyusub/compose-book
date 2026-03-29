@@ -96,7 +96,7 @@ class ViewportAddon(
                                     Text(
                                         "${viewport.widthDp}×${viewport.heightDp}",
                                         style = MaterialTheme.typography.bodySmall,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        color = MaterialTheme.colorScheme.primary,
                                         fontSize = 11.sp,
                                     )
                                 }
@@ -120,7 +120,7 @@ class ViewportAddon(
             content()
         } else {
             Column(
-                modifier = Modifier.padding(vertical = 8.dp),
+                modifier = Modifier.padding(all = 8.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
@@ -132,12 +132,12 @@ class ViewportAddon(
                     Text(
                         vp.name,
                         style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        color = MaterialTheme.colorScheme.primary,
                     )
                     Text(
                         "${vp.widthDp}×${vp.heightDp}",
                         style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.outline,
+                        color = MaterialTheme.colorScheme.primary,
                         fontSize = 11.sp,
                     )
                 }
@@ -148,9 +148,9 @@ class ViewportAddon(
                         .size(width = vp.widthDp.dp, height = vp.heightDp.dp)
                         .clip(RoundedCornerShape(16.dp))
                         .border(
-                            2.dp,
-                            MaterialTheme.colorScheme.outline.copy(alpha = 0.4f),
-                            RoundedCornerShape(16.dp)
+                            width = 2.dp,
+                            color = MaterialTheme.colorScheme.primary,
+                            shape = RoundedCornerShape(16.dp)
                         ),
                     contentAlignment = Alignment.Center,
                 ) {

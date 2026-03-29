@@ -23,11 +23,11 @@ import androidx.compose.ui.Modifier
 import com.yusubov.composebook.core.addons.Addon
 import com.yusubov.composebook.core.knobs.KnobScope
 import com.yusubov.composebook.core.navigation.NavigationState
-import com.yusubov.composebook.ui.components.AddonListView
-import com.yusubov.composebook.ui.components.HalfExpandableBottomSheet
-import com.yusubov.composebook.ui.components.KnobListView
-import com.yusubov.composebook.ui.components.NavigationMenuView
-import com.yusubov.composebook.ui.components.UseCaseView
+import com.yusubov.composebook.ui.views.AddonListView
+import com.yusubov.composebook.ui.views.HalfExpandableBottomSheet
+import com.yusubov.composebook.ui.views.KnobListView
+import com.yusubov.composebook.ui.views.NavigationMenuView
+import com.yusubov.composebook.ui.views.UseCaseView
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

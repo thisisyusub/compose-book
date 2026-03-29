@@ -1,4 +1,4 @@
-package com.yusubov.composebook.ui.components
+package com.yusubov.composebook.ui.views
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,7 +33,7 @@ internal fun AddonListView(
             Text(
                 "No add-ons configured.",
                 style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                color = MaterialTheme.colorScheme.primary,
             )
         }
     } else {
@@ -46,7 +46,7 @@ internal fun AddonListView(
                 Card(
                     shape = RoundedCornerShape(12.dp),
                     colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
                     ),
                 ) {
                     Column(

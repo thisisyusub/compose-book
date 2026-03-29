@@ -1,6 +1,5 @@
 package com.yusubov.composebook
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -12,7 +11,7 @@ import com.yusubov.composebook.core.navigation.NavigationState
 import com.yusubov.composebook.dsl.ComposeBookConfig
 import com.yusubov.composebook.ui.DesktopShellView
 import com.yusubov.composebook.ui.MobileShellView
-import com.yusubov.composebook.ui.theme.ComposeBookTheme
+import com.yusubov.composebook.ui.foundation.theme.ComposeBookTheme
 
 private const val DESKTOP_BREAKPOINT = 900
 
@@ -21,12 +20,11 @@ fun ComposeBook(
     config: ComposeBookConfig,
     modifier: Modifier = Modifier,
 ) {
-    val isDark = isSystemInDarkTheme()
     val navState = remember(config) { NavigationState(config.directories) }
     val selectedPath = navState.selectedPath
     val knobScope = remember(selectedPath) { KnobScope() }
 
-    ComposeBookTheme(darkTheme = isDark) {
+    ComposeBookTheme {
         BoxWithConstraints(modifier.fillMaxSize()) {
             if (maxWidth >= DESKTOP_BREAKPOINT.dp) {
                 DesktopShellView(

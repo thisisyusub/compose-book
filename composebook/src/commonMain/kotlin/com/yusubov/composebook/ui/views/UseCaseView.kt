@@ -1,4 +1,4 @@
-package com.yusubov.composebook.ui.components
+package com.yusubov.composebook.ui.views
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

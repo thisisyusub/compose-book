@@ -53,11 +53,12 @@ internal fun TextScaleAddonPanel(
             Text(
                 "Scale: ${(scale * 100).roundToInt()}%",
                 style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.primary,
             )
             Text(
                 "${formatFloat(scale, 2)}x",
                 style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                color = MaterialTheme.colorScheme.primary,
             )
         }
         Slider(
