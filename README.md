@@ -1,5 +1,10 @@
 # ComposeBook
 
+ Desktop Preview                                   |                 Mobile Preview                  |
+|:--------------------------------------------------|:-----------------------------------------------:|
+| <img src="assets/desktop-light.png" width="100%"> | <img src="assets/mobile-light.png" width="230"> |
+| <img src="assets/desktop-dark.png" width="100%">  | <img src="assets/mobile-dark.png" width="230">  |
+
 A Storybook-like UI component browser for **Compose Multiplatform**. Showcase, test, and interact
 with your composable components in isolation across Android, iOS, Desktop, and Web.
 
