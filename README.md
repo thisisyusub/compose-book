@@ -1,24 +1,29 @@
 # ComposeBook
 
-A Storybook-like UI component browser for **Compose Multiplatform**. Showcase, test, and interact with your composable components in isolation across Android, iOS, Desktop, and Web.
+A Storybook-like UI component browser for **Compose Multiplatform**. Showcase, test, and interact
+with your composable components in isolation across Android, iOS, Desktop, and Web.
 
 ## Features
 
-- **Component Isolation** - Preview UI components independently with use cases organized in directories
-- **Dynamic Knobs** - Real-time property controls (string, boolean, int slider) to tweak component parameters on the fly
-- **Addon System** - Extensible plugins for theme switching, device viewport previews, and text scaling
-- **Responsive Shell** - Automatically adapts between a 3-column desktop layout and a bottom-sheet mobile layout
+- **Component Isolation** - Preview UI components independently with use cases organized in
+  directories
+- **Dynamic Knobs** - Real-time property controls (string, boolean, int slider) to tweak component
+  parameters on the fly
+- **Addon System** - Extensible plugins for theme switching, device viewport previews, and text
+  scaling
+- **Responsive Shell** - Automatically adapts between a 3-column desktop layout and a bottom-sheet
+  mobile layout
 - **Multi-Platform** - Runs on Android, iOS, Desktop (JVM), and Web (WASM)
 - **Search** - Full-text search across all registered use cases
 
 ## Supported Platforms
 
-| Platform | Status |
-|----------|--------|
-| Android  | Min SDK 24 |
+| Platform | Status                |
+|----------|-----------------------|
+| Android  | Min SDK 24            |
 | iOS      | x64, arm64, simulator |
-| Desktop  | JVM 17+ |
-| Web      | WASM (Browser) |
+| Desktop  | JVM 17+               |
+| Web      | WASM (Browser)        |
 
 ## Installation
 
@@ -124,19 +129,22 @@ composeBookConfig {
 
 ## Built-in Addons
 
-| Addon | Description |
-|-------|-------------|
-| `themeAddon()` | Switch between multiple theme configurations |
-| `viewportAddon()` | Preview components in various device frames (Pixel, iPhone, iPad, Samsung, Desktop) |
-| `textScaleAddon()` | Adjust font scaling to test accessibility |
+| Addon              | Description                                                                         |
+|--------------------|-------------------------------------------------------------------------------------|
+| `themeAddon()`     | Switch between multiple theme configurations                                        |
+| `viewportAddon()`  | Preview components in various device frames (Pixel, iPhone, iPad, Samsung, Desktop) |
+| `textScaleAddon()` | Adjust font scaling to test accessibility                                           |
 
 ## Built-in Knob Types
 
-| Knob | Usage | Description |
-|------|-------|-------------|
-| `knob.string()` | `knob.string("Label", "default")` | Text input field |
-| `knob.boolean()` | `knob.boolean("Enabled", true)` | Toggle switch |
-| `knob.intSlider()` | `knob.intSlider("Size", 16, 8..32)` | Numeric range slider |
+| Knob               | Description          |
+|--------------------|----------------------|
+| `knob.string()`    | Text input field     |
+| `knob.boolean()`   | Toggle switch        |
+| `knob.intSlider()` | Numeric range slider |
+| `knob.int()`       | Integer input field  |
+| `knob.float()`     | Float input field    |
+| `knob.dropdown()`  | Dropdown field       |
 
 ## Architecture
 
@@ -166,7 +174,3 @@ The `sample/` module contains a full demo app with custom themes and component e
 # Web (WASM)
 ./gradlew :sample:wasmJsBrowserRun
 ```
-
-## License
-
-TBD
