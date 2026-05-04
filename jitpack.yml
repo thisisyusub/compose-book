@@ -1,6 +1,9 @@
 os: ubuntu-22.04
 jdk:
   - openjdk17
+  # This prevents the "GLIBC" error by clearing old Node/Yarn state
+  - ./gradlew clean
+  - rm -rf .kotlin-js-store
 env:
   # Limits Gradle memory so the JitPack Linux container doesn't kill it
   GRADLE_OPTS: "-Xmx3g -Dorg.gradle.daemon=false"
