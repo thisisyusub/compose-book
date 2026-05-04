@@ -141,6 +141,37 @@ composeBookConfig {
 }
 ```
 
+### Recomposition Tracker Add on 
+
+To use this add on, firstly you should add it to configuration:
+
+```kotlin
+    ComposeBook(
+        composeBookConfig {
+            addons {
+                viewportAddon()
+                textScaleAddon()
+                recompositionTrackerAddOn()
+            }
+```
+
+And modifier provided from the use case scope should be used in your component use-cases:
+
+```kotlin
+fun DirectoryBuilder.buttonUseCases() {
+    directory("Button") {
+        useCase("Primary") {
+            AppButton(
+                modifier = modifier, // this modifier holds the recomposition tracking modifier internally
+                label = knob.string("Label", "Click Me")
+            )
+        }
+    }
+}
+```
+
+
+
 ## Built-in Addons
 
 | Addon              | Description                                                                         |
