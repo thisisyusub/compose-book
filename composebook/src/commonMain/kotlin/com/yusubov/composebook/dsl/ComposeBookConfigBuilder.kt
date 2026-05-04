@@ -3,6 +3,7 @@ package com.yusubov.composebook.dsl
 import androidx.compose.runtime.Composable
 import com.yusubov.composebook.core.addons.Addon
 import com.yusubov.composebook.core.addons.defaults.DeviceViewport
+import com.yusubov.composebook.core.addons.defaults.RecompositionTrackerAddOn
 import com.yusubov.composebook.core.addons.defaults.TextScaleAddon
 import com.yusubov.composebook.core.addons.defaults.ThemeAddon
 import com.yusubov.composebook.core.addons.defaults.ThemeOption
@@ -55,7 +56,9 @@ class AddonsBuilder {
     fun <T> themeAddon(
         themes: List<ThemeOption<T>>,
         builder: @Composable (data: T, content: @Composable () -> Unit) -> Unit,
-    ) { addons.add(ThemeAddon(themes, builder)) }
+    ) {
+        addons.add(ThemeAddon(themes, builder))
+    }
 
     fun textScaleAddon(initialScale: Float = 1f) {
         addons.add(TextScaleAddon(initialScale))
@@ -63,6 +66,10 @@ class AddonsBuilder {
 
     fun viewportAddon(viewports: List<DeviceViewport> = DeviceViewport.defaults) {
         addons.add(ViewportAddon(viewports))
+    }
+
+    fun recompositionTrackerAddOn() {
+        addons.add(RecompositionTrackerAddOn())
     }
 
     internal fun build(): List<Addon> = addons.toList()

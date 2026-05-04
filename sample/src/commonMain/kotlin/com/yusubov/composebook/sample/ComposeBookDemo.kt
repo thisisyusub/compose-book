@@ -42,6 +42,7 @@ fun ComposeBookDemo() {
                 )
                 viewportAddon()
                 textScaleAddon()
+                recompositionTrackerAddOn()
             }
 
             directory("Components") {
@@ -61,7 +62,10 @@ fun DirectoryBuilder.buttonUseCases() {
             val floatKnob = knob.float("Float", 123.456f)
             val dropdownKnob = knob.dropdown("Dropdown", listOf("Option 1", "Option 2", "Option 3"))
 
-            AppButton(label = knob.string("Label", "Click Me"))
+            AppButton(
+                modifier = modifier,
+                label = knob.string("Label", "Click Me")
+            )
         }
         useCase("Outlined") {
             AppButton(label = knob.string("Label", "Cancel"))
