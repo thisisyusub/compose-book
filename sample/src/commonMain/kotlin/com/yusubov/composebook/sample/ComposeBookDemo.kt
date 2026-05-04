@@ -55,20 +55,10 @@ fun ComposeBookDemo() {
 fun DirectoryBuilder.buttonUseCases() {
     directory("Button") {
         useCase("Primary") {
-            val stringKnob = knob.string("Label", "Hello")
-            val booleanKnob = knob.boolean("Enabled", true)
-            val intSliderKnob = knob.intSlider("Size", initialValue = 16, range = 8..32)
-            val intKnob = knob.int("Int", 123)
-            val floatKnob = knob.float("Float", 123.456f)
-            val dropdownKnob = knob.dropdown("Dropdown", listOf("Option 1", "Option 2", "Option 3"))
-
             AppButton(
                 modifier = modifier,
                 label = knob.string("Label", "Click Me")
             )
-        }
-        useCase("Outlined") {
-            AppButton(label = knob.string("Label", "Cancel"))
         }
     }
 }

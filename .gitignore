@@ -3,9 +3,6 @@
 
 # Gradle
 .gradle/
-gradle/wrapper/gradle-wrapper.jar
-gradlew
-gradlew.bat
 
 # Kotlin
 .kotlin/
