@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.yusubov.composebook"
-version = "0.3.3"
+version = "0.3.4"
 
 android {
     namespace = "com.yusubov.composebook"
@@ -44,9 +44,9 @@ kotlin {
     }
 
     @OptIn(org.jetbrains.kotlin.gradle.ExperimentalWasmDsl::class)
-    wasmJs {
-        browser()
-    }
+//    wasmJs {
+//        browser()
+//    }
 
     sourceSets {
         commonMain.dependencies {
