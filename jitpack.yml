@@ -1,7 +1,6 @@
+os: ubuntu-22.04
 jdk:
   - openjdk17
-before_install:
-  - gradle wrapper --gradle-version 8.13
 env:
   # Limits Gradle memory so the JitPack Linux container doesn't kill it
   GRADLE_OPTS: "-Xmx3g -Dorg.gradle.daemon=false"

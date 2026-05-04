@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.yusubov.composebook"
-version = "0.2.4"
+version = "0.2.5"
 
 android {
     namespace = "com.yusubov.composebook"
