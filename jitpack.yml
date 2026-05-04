@@ -2,8 +2,11 @@ os: ubuntu-22.04
 jdk:
   - openjdk17
 before_install:
+  # 1. Clean the project
   - ./gradlew clean
+  # 2. Wipe the local JS/Wasm store
   - rm -rf .kotlin-js-store
+  # 3. PURGE the downloaded Node binaries from the Gradle home
+  - rm -rf $HOME/.gradle/nodejs
 env:
-  # Limits Gradle memory so the JitPack Linux container doesn't kill it
   GRADLE_OPTS: "-Xmx3g -Dorg.gradle.daemon=false"
