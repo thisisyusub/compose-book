@@ -1,7 +1,7 @@
 os: ubuntu-22.04
 jdk:
   - openjdk17
-  # This prevents the "GLIBC" error by clearing old Node/Yarn state
+before_install:
   - ./gradlew clean
   - rm -rf .kotlin-js-store
 env:
