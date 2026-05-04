@@ -2,3 +2,6 @@ jdk:
   - openjdk17
 before_install:
   - ./gradlew wrapper
+env:
+  # Limits Gradle memory so the JitPack Linux container doesn't kill it
+  GRADLE_OPTS: "-Xmx3g -Dorg.gradle.daemon=false"
